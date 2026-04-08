@@ -7,11 +7,10 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 html {
-  scroll-behavior: smooth;
   scroll-padding-top: var(--nav-h);
   font-size: 16px;
-  /* smoother system scroll on supported browsers */
-  scroll-timeline: --page-scroll block;
+  background: var(--bg);
+  overflow-x: hidden;
 }
 
 body {
@@ -289,6 +288,7 @@ body.page-red .nav-logo img { filter: invert(1); }
   position: absolute;
   inset: 0;
   z-index: 0;
+  pointer-events: none;
 }
 .hc-slide {
   position: absolute;
@@ -882,6 +882,7 @@ body.page-red .nav-logo img { filter: invert(1); }
 .about {
   padding: var(--section-pad) 0;
   position: relative;
+  overflow: hidden;
 }
 
 /* ── Animated background paths container ─────────────────── */

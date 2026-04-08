@@ -457,12 +457,7 @@
       if (!target || id === '#') return;
       e.preventDefault();
       const top = target.getBoundingClientRect().top + window.scrollY - 80;
-      /* GSAP scroll — silky smooth */
-      gsap.to(window, {
-        scrollTo: { y: top, autoKill: true },
-        duration: 2.0,
-        ease: 'expo.inOut',
-      });
+      window.scrollTo({ top, behavior: 'smooth' });
     });
   });
 
