@@ -1,0 +1,71 @@
+/* ═══════════════════════════════════════════════════════════
+   DESIGN SYSTEM v2 — SAGIV FINGER PORTFOLIO
+   Inspired by: designbybrandin.com
+   Palette: Black / White / Orange-Red
+   ═══════════════════════════════════════════════════════════ */
+
+:root {
+
+  /* ── Core Palette ────────────────────────────────────────── */
+  --black:      #000000;
+  --white:      #ffffff;
+  --red:        #BF1919;      /* Matches WebGL smoke u_color [0.75,0.10,0.10] */
+  --red-dark:   #9e1515;
+  --near-black: #0a0a0a;
+  --surface:    #0f0f0f;
+  --surface-2:  #161616;
+  --border:     #1c1c1c;
+  --muted:      #444444;
+  --secondary:  #888888;
+
+  /* ── Semantic Aliases ───────────────────────────────────── */
+  --bg:      var(--black);
+  --fg:      var(--white);
+  --accent:  var(--red);
+
+  /* ── Typography ─────────────────────────────────────────── */
+  /* Inter Black for English headlines, Heebo as Hebrew fallback */
+  --font-display: 'Inter', 'Heebo', sans-serif;
+  /* Assistant SemiBold for navigation (native Hebrew support) */
+  --font-nav:     'Assistant', 'Heebo', sans-serif;
+  /* Noto Sans for body text, Heebo for Hebrew fallback */
+  --font-body:    'Noto Sans', 'Heebo', sans-serif;
+
+  /* Fluid type scale */
+  --text-2xs:  clamp(0.6rem,  0.8vw,  0.7rem);
+  --text-xs:   clamp(0.72rem, 1vw,    0.82rem);
+  --text-sm:   clamp(0.85rem, 1.2vw,  0.95rem);
+  --text-base: clamp(1rem,    1.4vw,  1.1rem);
+  --text-md:   clamp(1.2rem,  2vw,    1.5rem);
+  --text-lg:   clamp(1.8rem,  3vw,    2.8rem);
+  --text-xl:   clamp(2.5rem,  5vw,    4.5rem);
+  --text-2xl:  clamp(3.5rem,  7vw,    7rem);
+  --text-hero: clamp(4rem,    10vw,   10rem);
+
+  /* ── Spacing Scale (4px base) ───────────────────────────── */
+  --sp-1:  4px;    --sp-2:  8px;    --sp-3:  12px;
+  --sp-4:  16px;   --sp-5:  24px;   --sp-6:  32px;
+  --sp-7:  48px;   --sp-8:  64px;   --sp-9:  96px;
+  --sp-10: 128px;  --sp-11: 192px;  --sp-12: 256px;
+
+  /* ── Layout ─────────────────────────────────────────────── */
+  --max-w:       1700px;
+  --gutter:      clamp(1.5rem, 5vw, 5rem);
+  --section-pad: clamp(4rem, 7vw, 8rem);
+  --nav-h:       95px;
+
+  /* ── Motion ─────────────────────────────────────────────── */
+  --ease-out:    cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-inout:  cubic-bezier(0.76, 0, 0.24, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-cinema: cubic-bezier(0.22, 1, 0.36, 1);
+
+  --dur-fast:   0.18s;
+  --dur-base:   0.38s;
+  --dur-slow:   0.75s;
+  --dur-cinema: 1.5s;
+
+  /* ── Misc ────────────────────────────────────────────────── */
+  --r-pill: 200px;
+  --r-sm:   4px;
+}

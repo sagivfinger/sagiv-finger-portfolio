@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Sagiv Finger — במאי ועורך וידאו</title>
+  <meta name="description" content="Sagiv Finger — במאי ועורך וידאו. סיפור קולנועי ברמה הגבוהה ביותר." />
+
+  <!-- ── Fonts ─────────────────────────────────────────── -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <!--
+    Inter Black   → English headlines (display font)
+    Noto Sans     → Body text (Latin + Hebrew fallback)
+    Assistant     → Navigation (native Hebrew, SemiBold)
+    Heebo         → Hebrew bold headings fallback
+  -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@900&family=Noto+Sans:wght@300;400;600&family=Assistant:wght@400;600;700&family=Heebo:wght@300;400;700;900&display=swap" rel="stylesheet" />
+
+  <!-- ── Styles ────────────────────────────────────────── -->
+  <link rel="stylesheet" href="css/design-system.css" />
+  <link rel="stylesheet" href="css/main.css" />
+</head>
+
+<body>
+
+  <!-- ── Film grain overlay ───────────────────────────── -->
+  <!-- ── WebGL smoke background ──────────────────────── -->
+  <canvas id="smokeCanvas" aria-hidden="true"></canvas>
+
+  <!-- ── Film grain overlay ───────────────────────────── -->
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- ── Custom cursor ────────────────────────────────── -->
+  <div id="cursor"      class="cursor"      aria-hidden="true"></div>
+  <div id="cursor-ring" class="cursor-ring" aria-hidden="true"></div>
+
+
+  <!-- ═══════════════════════════════════════════════════
+       NAVIGATION
+  ═══════════════════════════════════════════════════ -->
+  <nav class="nav" id="nav" role="navigation" aria-label="ניווט ראשי">
+    <div class="nav-inner">
+
+      <!-- Mobile burger (left in RTL) -->
+      <button class="nav-burger" id="navBurger"
+              aria-label="פתח תפריט" aria-expanded="false">
+        <span></span>
+        <span></span>
+      </button>
+
+      <!-- Desktop links (left side in RTL = start of reading direction) -->
+      <ul class="nav-links" role="list">
+        <li><a class="nav-link" href="#projects">פרויקטים</a></li>
+        <li><a class="nav-link" href="#about">אודות</a></li>
+        <li><a class="nav-link" href="#contact">צור קשר</a></li>
+      </ul>
+
+      <!-- Logo (right side in RTL = visually right) -->
+      <a href="#hero" class="nav-logo" aria-label="Sagiv Finger – דף הבית">
+        <img src="./brand_assets/sagivfingerlogo.png" alt="Sagiv Finger" width="52" height="52" />
+      </a>
+
+    </div>
+  </nav>
+
+  <!-- Mobile full-screen menu -->
+  <nav class="mobile-menu" id="mobileMenu" aria-hidden="true" aria-label="תפריט נייד">
+    <ul role="list">
+      <li><a class="mobile-link" href="#projects">פרויקטים</a></li>
+      <li><a class="mobile-link" href="#about">אודות</a></li>
+      <li><a class="mobile-link" href="#contact">צור קשר</a></li>
+    </ul>
+  </nav>
+
+
+  <main>
+
+    <!-- ═══════════════════════════════════════════════════
+         HERO
+    ═══════════════════════════════════════════════════ -->
+    <section class="hero" id="hero" aria-labelledby="hero-name">
+
+      <!-- ── FULL-SCREEN IMAGE CAROUSEL ────────────────────────
+           Replace the src paths with your actual frames.
+           Add/remove .hc-slide elements freely.
+      ───────────────────────────────────────────────────────── -->
+      <div class="hero-carousel" aria-hidden="true">
+        <div class="hc-slide hc-slide--active" style="background-image:url('./assets/carousel/01.jpg')"></div>
+        <div class="hc-slide" style="background-image:url('./assets/carousel/02.jpg')"></div>
+        <div class="hc-slide" style="background-image:url('./assets/carousel/03.jpg')"></div>
+        <div class="hc-slide" style="background-image:url('./assets/carousel/04.jpg')"></div>
+        <div class="hc-slide" style="background-image:url('./assets/carousel/05.jpg')"></div>
+      </div>
+      <!-- Subtle gradient overlay so text stays readable -->
+      <div class="hero-carousel-overlay" aria-hidden="true"></div>
+
+      <div class="hero-content">
+
+        <!-- Eyebrow -->
+        <p class="hero-eyebrow" aria-hidden="true">
+          <span class="hero-eyebrow-dash"></span>
+          <span>PORTFOLIO&ensp;·&ensp;2026</span>
+        </p>
+
+        <!-- Name — clip reveal -->
+        <h1 class="hero-name" id="hero-name" aria-label="Sagiv Finger">
+          <span class="hero-name-wrap">
+            <span class="hero-name-line">SAGIV</span>
+          </span>
+          <span class="hero-name-wrap">
+            <span class="hero-name-line">FINGER</span>
+          </span>
+        </h1>
+
+        <!-- Orange-red rule -->
+        <div class="hero-rule" aria-hidden="true"></div>
+
+        <!-- Subtitle -->
+        <p class="hero-subtitle">
+          <span>במאי</span>
+          <span class="hsubt-dot" aria-hidden="true"> . </span>
+          <span>צלם</span>
+          <span class="hsubt-dot" aria-hidden="true"> . </span>
+          <span>עורך</span>
+          <span class="hsubt-dot" aria-hidden="true"> .</span>
+        </p>
+
+        <!-- CTAs -->
+        <div class="hero-actions">
+          <a class="btn-primary" href="#projects">
+            <span>הצג עבודות</span>
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              <path d="M2 7h10M12 7L8 3M12 7L8 11"
+                    stroke="currentColor" stroke-width="1.8"
+                    stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <a class="btn-ghost" href="#contact">
+            <span>צור קשר</span>
+          </a>
+        </div>
+
+      </div><!-- /.hero-content -->
+
+      <!-- Carousel navigation arrows -->
+      <button class="hc-btn hc-prev" aria-label="תמונה קודמת">&#8249;</button>
+      <button class="hc-btn hc-next" aria-label="תמונה הבאה">&#8250;</button>
+
+      <!-- Slide dots -->
+      <div class="hc-dots" aria-hidden="true"></div>
+
+      <!-- Corner meta — left -->
+      <div class="hero-meta" aria-hidden="true">
+        <span>Tel Aviv, Israel</span>
+        <span>© 2026</span>
+      </div>
+
+      <!-- Corner meta — right -->
+      <div class="hero-meta hero-meta--right" aria-hidden="true">
+        <span>+8 שנים של ניסיון</span>
+      </div>
+
+    </section><!-- /#hero -->
+
+
+    <!-- ═══════════════════════════════════════════════════
+         TESTIMONIALS — cards
+    ═══════════════════════════════════════════════════ -->
+    <section class="testi-cards" id="testimonials" aria-labelledby="testimonials-title">
+
+      <header class="section-header">
+        <div class="section-eyebrow">
+          <span class="section-eyebrow-num">—</span>
+          <span class="section-eyebrow-line"></span>
+          <span>לקוחות</span>
+        </div>
+        <h2 class="section-title" id="testimonials-title">קצת מלקוחות</h2>
+      </header>
+
+      <div class="tc-grid">
+
+        <!-- Card 1 — initials: ס.ת (סטודיו תוכן) -->
+        <div class="tc-card reveal">
+          <div class="card-top">
+            <div class="card-glow" aria-hidden="true"></div>
+            <div class="card-initials" aria-hidden="true">ס.ת</div>
+          </div>
+          <div class="tc-body">
+            <p class="tc-quote">״שגיב הוא אחד העורכים הכי מדויקים שעבדתי איתם. הוא מבין קצב, יודע לספר סיפור, והתוצאה תמיד מרגישה מקצועית ברמה גבוהה.״</p>
+            <p class="tc-author">— בעל סטודיו תוכן</p>
+            <p class="tc-role">סטודיו תוכן</p>
+          </div>
+        </div>
+
+        <!-- Card 2 — initials: ע.ק (עסק קעקועים) -->
+        <div class="tc-card reveal reveal-d1">
+          <div class="card-top">
+            <div class="card-glow" aria-hidden="true"></div>
+            <div class="card-initials" aria-hidden="true">ע.ק</div>
+          </div>
+          <div class="tc-body">
+            <p class="tc-quote">״עבודה מהירה, תקשורת מעולה, ותוצאה מעל הציפיות. הוא לקח את החומרים שלנו והפך אותם למשהו הרבה יותר חזק ממה שדמיינו.״</p>
+            <p class="tc-author">— בעלת עסק קעקועים</p>
+            <p class="tc-role">עסק קעקועים</p>
+          </div>
+        </div>
+
+        <!-- Card 3 — initials: ל.ח (לקוח חוזר) -->
+        <div class="tc-card reveal reveal-d2">
+          <div class="card-top">
+            <div class="card-glow" aria-hidden="true"></div>
+            <div class="card-initials" aria-hidden="true">ל.ח</div>
+          </div>
+          <div class="tc-body">
+            <p class="tc-quote">״מעבר לעריכה עצמה, הוא מביא חשיבה יצירתית ויודע להרים פרויקט. לגמרי מישהו שאפשר לסמוך עליו.״</p>
+            <p class="tc-author">— לקוח חוזר</p>
+            <p class="tc-role">לקוח חוזר</p>
+          </div>
+        </div>
+
+      </div>
+
+      <p class="tc-footnote reveal reveal-d3">*העדויות נערכו לצורך הגנה על פרטיות הלקוח</p>
+
+    </section><!-- /#testimonials -->
+
+
+    <!-- ═══════════════════════════════════════════════════
+         PROJECTS
+    ═══════════════════════════════════════════════════ -->
+    <section class="projects" id="projects" aria-labelledby="projects-title">
+
+      <header class="section-header">
+        <div class="section-eyebrow">
+          <span class="section-eyebrow-num">01</span>
+          <span class="section-eyebrow-line"></span>
+          <span>פרויקטים נבחרים</span>
+        </div>
+        <h2 class="section-title" id="projects-title">
+          עבודות שמספרות<br/>סיפורים שנשארים
+        </h2>
+        <p class="section-desc">מסרטים קצרים ועד קמפיינים מותגיים — כל פרויקט מתחיל מסיפור.</p>
+      </header>
+
+      <div class="projects-grid">
+
+        <!-- Card 01 -->
+        <article class="project-card" data-video-id="dT5h37U4ESs" aria-label="פרויקט: מירוץ העכברים">
+          <a class="project-link" href="#" aria-label="צפה בפרויקט מירוץ העכברים">
+            <div class="project-thumb">
+              <img class="project-thumb-img" src="https://img.youtube.com/vi/dT5h37U4ESs/maxresdefault.jpg" alt="מירוץ העכברים" loading="lazy" />
+              <div class="project-hover-overlay">
+                <svg class="project-play-icon" viewBox="0 0 60 60" fill="none" aria-hidden="true">
+                  <circle cx="30" cy="30" r="29" stroke="rgba(255,255,255,0.4)" stroke-width="1"/>
+                  <path d="M25 21l16 9-16 9V21z" fill="white"/>
+                </svg>
+              </div>
+            </div>
+            <div class="project-info">
+              <div class="project-meta">
+                <span class="project-category">סרט קצר</span>
+                <span class="project-year">2024</span>
+              </div>
+              <h3 class="project-title">מירוץ העכברים</h3>
+              <p class="project-desc">צעיר הלכוד בעבודה משרדית תחת אביו השולט, עומד בפני בחירה בין עתיד בטוח לבין חלום רחוק על חיים חדשים בהוואי — עד שעובד חדש וכאוטי מטלטל את עולמו.</p>
+              <p class="project-role">תפקיד — במאי, צלם, עורך</p>
+            </div>
+          </a>
+        </article>
+
+        <!-- Card 02 — סרטון יוטיוב -->
+        <article class="project-card" aria-label="פרויקט: השלב הראשון">
+          <div class="project-link project-link--no-video">
+            <div class="project-thumb project-thumb--dark">
+              <div class="project-hover-overlay"></div>
+            </div>
+            <div class="project-info">
+              <div class="project-meta">
+                <span class="project-category">סרטון יוטיוב</span>
+                <span class="project-year">2026</span>
+              </div>
+              <h3 class="project-title">השלב הראשון הוא השלב הקשה ביותר.</h3>
+              <p class="project-desc">סרטון יוטיוב שמראה את הקשיים בלהרים הפקה, מאחורי הקלעים של החלום שלי להפוך ליוצר קולנוע.</p>
+              <p class="project-role">תפקיד — עורך, צלם, כותב, במאי</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 03 -->
+        <article class="project-card" data-video-id="tq4Mqq0xZBU" aria-label="פרויקט: מעשה דינה">
+          <a class="project-link" href="#" aria-label="צפה בפרויקט מעשה דינה">
+            <div class="project-thumb">
+              <img class="project-thumb-img" src="https://img.youtube.com/vi/tq4Mqq0xZBU/maxresdefault.jpg" alt="מעשה דינה" loading="lazy" />
+              <div class="project-hover-overlay">
+                <svg class="project-play-icon" viewBox="0 0 60 60" fill="none" aria-hidden="true">
+                  <circle cx="30" cy="30" r="29" stroke="rgba(255,255,255,0.4)" stroke-width="1"/>
+                  <path d="M25 21l16 9-16 9V21z" fill="white"/>
+                </svg>
+              </div>
+            </div>
+            <div class="project-info">
+              <div class="project-meta">
+                <span class="project-category">סרט קצר</span>
+                <span class="project-year">2025</span>
+              </div>
+              <h3 class="project-title">מעשה דינה</h3>
+              <p class="project-desc">אישה שחוזרת לאוניברסיטה ממנה נשרה בעקבות תקיפה מינית, מתחזה ליוצרת דוקומנטרית כדי ללכוד הודאה מצולמת מהמרצה שפגע בה.</p>
+              <p class="project-role">תפקיד — צלם ראשי, עורך</p>
+            </div>
+          </a>
+        </article>
+
+        <!-- Card 04 -->
+        <article class="project-card" data-video-id="qZ9ALtFDbhg" data-video-short="true" aria-label="פרויקט: חבילת תוכן">
+          <a class="project-link" href="#" aria-label="פרויקט חבילת תוכן">
+            <div class="project-thumb">
+              <img class="project-thumb-img" src="https://img.youtube.com/vi/qZ9ALtFDbhg/maxresdefault.jpg" alt="חבילת תוכן" loading="lazy" />
+              <div class="project-hover-overlay">
+                <svg class="project-play-icon" viewBox="0 0 60 60" fill="none" aria-hidden="true">
+                  <circle cx="30" cy="30" r="29" stroke="rgba(255,255,255,0.4)" stroke-width="1"/>
+                  <path d="M25 21l16 9-16 9V21z" fill="white"/>
+                </svg>
+              </div>
+            </div>
+            <div class="project-info">
+              <div class="project-meta">
+                <span class="project-category">סושיאל</span>
+                <span class="project-year">2025</span>
+              </div>
+              <h3 class="project-title">חבילות תוכן</h3>
+              <p class="project-desc">חבילות סרטונים לפרסום עסק, הרצאות ופודקאסטים — עריכה מהירה ומדויקת שמביאה תוצאות.</p>
+              <p class="project-role">תפקיד — עורך</p>
+            </div>
+          </a>
+        </article>
+
+        <!-- Card 05 -->
+        <article class="project-card" data-video-id="LT8z3vNazXg" data-video-short="true" aria-label="פרויקט: הסיפור מאחורי הסיפורים">
+          <a class="project-link" href="#" aria-label="פרויקט סושיאל קורס פירסינג">
+            <div class="project-thumb">
+              <img class="project-thumb-img" src="https://img.youtube.com/vi/LT8z3vNazXg/maxresdefault.jpg" alt="הסיפור מאחורי הסיפורים" loading="lazy" />
+              <div class="project-hover-overlay">
+                <svg class="project-play-icon" viewBox="0 0 60 60" fill="none" aria-hidden="true">
+                  <circle cx="30" cy="30" r="29" stroke="rgba(255,255,255,0.4)" stroke-width="1"/>
+                  <path d="M25 21l16 9-16 9V21z" fill="white"/>
+                </svg>
+              </div>
+            </div>
+            <div class="project-info">
+              <div class="project-meta">
+                <span class="project-category">סושיאל</span>
+                <span class="project-year">2026</span>
+              </div>
+              <h3 class="project-title">חבילת סרטונים להרמת קורס</h3>
+              <p class="project-desc">חבילת סרטונים לפרסום קורס פירסינג — תוכן שמספר את הסיפור מאחורי המותג.</p>
+              <p class="project-role">תפקיד — צלם, עורך</p>
+            </div>
+          </a>
+        </article>
+
+        <!-- Card 06 — הסיבוב האחרון -->
+        <article class="project-card" data-video-id="RAHc7dYqVTw" aria-label="פרויקט: הסיבוב האחרון">
+          <a class="project-link" href="#" aria-label="צפה בפרויקט הסיבוב האחרון">
+            <div class="project-thumb">
+              <img class="project-thumb-img" src="https://img.youtube.com/vi/RAHc7dYqVTw/maxresdefault.jpg" alt="הסיבוב האחרון" loading="lazy" />
+              <div class="project-hover-overlay">
+                <svg class="project-play-icon" viewBox="0 0 60 60" fill="none" aria-hidden="true">
+                  <circle cx="30" cy="30" r="29" stroke="rgba(255,255,255,0.4)" stroke-width="1"/>
+                  <path d="M25 21l16 9-16 9V21z" fill="white"/>
+                </svg>
+              </div>
+            </div>
+            <div class="project-info">
+              <div class="project-meta">
+                <span class="project-category">סרט קצר</span>
+                <span class="project-year">2025</span>
+              </div>
+              <h3 class="project-title">הסיבוב האחרון</h3>
+              <p class="project-desc">שני עבריינים ותיקים שמנסים להירגע לפני שבת נגררים לעימות בלתי צפוי בחומוסיה מקומית — מפגש שמדרדר למאבק אלים, אבסורדי ומלא מתח.</p>
+              <p class="project-role">תפקיד — צלם ראשי</p>
+            </div>
+          </a>
+        </article>
+
+        <!-- Card 07 — כתוביות סיום לסרט -->
+        <article class="project-card" aria-label="פרויקט: כתוביות סיום לסרט">
+          <div class="project-link project-link--no-video">
+            <div class="project-thumb project-thumb--dark">
+              <div class="project-hover-overlay"></div>
+            </div>
+            <div class="project-info">
+              <div class="project-meta">
+                <span class="project-category">כתוביות סיום לסרט</span>
+                <span class="project-year">2026</span>
+              </div>
+              <h3 class="project-title">כתוביות סיום לסרט שנמצא בתהליך כתיבה.</h3>
+              <p class="project-desc">קטע מתוך כתוביות סיום של סרט בתהליך. האובייקטים התלת־ממדיים משמשים כשפה ויזואלית שמספרת את סיפור הדמויות. עיצוב ועריכה ב־After Effects ו־Blender.</p>
+              <p class="project-role"></p>
+            </div>
+          </div>
+        </article>
+
+      </div><!-- /.projects-grid -->
+    </section><!-- /#projects -->
+
+
+    <!-- ═══════════════════════════════════════════════════
+         ABOUT  (color-change section → orange-red)
+    ═══════════════════════════════════════════════════ -->
+    <section class="about" id="about"
+             data-color-section="red"
+             aria-labelledby="about-title">
+
+      <!-- Animated background paths (ported from framer-motion component) -->
+      <div class="about-bg-paths" aria-hidden="true"></div>
+
+      <header class="section-header">
+        <div class="section-eyebrow">
+          <span class="section-eyebrow-num">02</span>
+          <span class="section-eyebrow-line"></span>
+          <span>אודות</span>
+        </div>
+      </header>
+
+      <div class="about-layout">
+
+        <!-- Portrait -->
+        <div class="about-portrait">
+          <div class="about-portrait-frame">
+            <img src="./brand_assets/WhatsApp Image 2026-04-08 at 03.35.12.jpeg" alt="Sagiv Finger" loading="lazy" class="about-portrait-img" />
+          </div>
+        </div>
+
+        <!-- Text -->
+        <div class="about-text" id="about-title">
+          <h2 class="about-heading">קצת עליי</h2>
+
+          <p class="about-body">
+            כבר בגיל 12 התחלתי לצלם ולערוך, ובגיל 14 עברתי גם לבימוי. הגישה שלי תמיד הייתה ללמוד את כל התחומים בשביל ליצור תוצר מוגמר בצורה הכי גבוהה שלו. אני עוסק בקולנוע בעיקר בשביל להעביר רגש דרך ויזואליות של צילום, עריכה וכתיבה.
+          </p>
+
+          <p class="about-body">
+            עבדתי עם חברות ויוצרים שרצו להפוך את החזון למציאות. לכל פרויקט שאני לוקח אני מביא גישה קולנועית, תשומת לב לפרטים הקטנים וסטוריטלינג.
+          </p>
+        </div><!-- /.about-text -->
+
+      </div><!-- /.about-layout -->
+    </section><!-- /#about -->
+
+
+    <!-- ═══════════════════════════════════════════════════
+         CONTACT
+    ═══════════════════════════════════════════════════ -->
+    <section class="contact" id="contact" aria-labelledby="contact-title">
+
+      <header class="section-header">
+        <div class="section-eyebrow">
+          <span class="section-eyebrow-num">05</span>
+          <span class="section-eyebrow-line"></span>
+          <span>צור קשר</span>
+        </div>
+        <h2 class="section-title" id="contact-title">מוכן לעלות שלב?<br/>בוא נתחיל.</h2>
+        <p class="section-desc">מהרעיון הראשוני ועד התוצר המוגמר</p>
+      </header>
+
+      <div class="contact-layout">
+
+        <!-- Email -->
+        <div class="contact-email-wrap">
+          <a class="contact-email" href="mailto:SagivFinger8@gmail.com">
+            SagivFinger8@gmail.com
+          </a>
+        </div>
+
+        <!-- Socials -->
+        <div class="contact-socials">
+
+          <a class="social-link" href="https://www.instagram.com/sagivfinger/" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+              <rect x="2" y="2" width="20" height="20" rx="5"/>
+              <circle cx="12" cy="12" r="4"/>
+              <circle cx="17.5" cy="6.5" r="0.6" fill="currentColor" stroke="none"/>
+            </svg>
+            <span>Instagram</span>
+          </a>
+
+          <a class="social-link" href="https://www.youtube.com/@fingers12244" aria-label="YouTube" target="_blank" rel="noopener noreferrer">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+              <path d="M22.54 6.42A2.78 2.78 0 0020.59 4.4C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 001.46 6.42 29 29 0 001 12a29 29 0 00.46 5.58A2.78 2.78 0 003.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.95A29 29 0 0023 12a29 29 0 00-.46-5.58z"/>
+              <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="currentColor" stroke="none"/>
+            </svg>
+            <span>YouTube</span>
+          </a>
+
+        </div><!-- /.contact-socials -->
+      </div><!-- /.contact-layout -->
+    </section><!-- /#contact -->
+
+  </main>
+
+
+  <!-- ═══════════════════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════════════════ -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer-inner">
+
+      <a class="footer-logo" href="#hero" aria-label="חזרה לראש הדף">
+        <img src="./brand_assets/sagivfingerlogo.png" alt="SF" width="40" height="40" loading="lazy" />
+      </a>
+
+      <p class="footer-copy">© 2026 Sagiv Finger. כל הזכויות שמורות.</p>
+
+      <a class="footer-top" href="#hero" aria-label="גלול לראש הדף">
+        <span>למעלה</span>
+        <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+          <path d="M7 11V3M7 3L3 7M7 3L11 7"
+                stroke="currentColor" stroke-width="1.6"
+                stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+
+    </div>
+  </footer>
+
+
+  <!-- ═══════════════════════════════════════════════════
+       VIDEO MODAL
+  ═══════════════════════════════════════════════════ -->
+  <div id="videoModal" class="vmodal" aria-modal="true" aria-hidden="true" role="dialog" aria-label="נגן וידאו">
+    <div class="vmodal-overlay"></div>
+    <div class="vmodal-box">
+      <button class="vmodal-close" aria-label="סגור וידאו">✕</button>
+      <div class="vmodal-iframe-wrap" id="vmodalIframeWrap">
+        <iframe id="videoModalFrame" class="vmodal-iframe"
+                src=""
+                frameborder="0"
+                allow="autoplay; encrypted-media; fullscreen"
+                allowfullscreen
+                title="YouTube video"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── GSAP (CDN) ──────────────────────────────────── -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
+          crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"
+          crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"
+          crossorigin="anonymous"></script>
+
+  <!-- ── Main script ────────────────────────────────── -->
+  <script src="js/main.js"></script>
+
+</body>
+</html>
