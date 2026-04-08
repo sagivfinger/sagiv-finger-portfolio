@@ -217,12 +217,27 @@
     btnNext && btnNext.addEventListener('click', () => { next(); resetTimer(); });
     btnPrev && btnPrev.addEventListener('click', () => { prev(); resetTimer(); });
 
-    /* Pause auto-advance while user hovers the hero */
+    /* Pause auto-advance while user hovers or touches the hero */
     const heroEl = document.getElementById('hero');
     if (heroEl) {
       heroEl.addEventListener('mouseenter', () => clearInterval(autoTimer));
       heroEl.addEventListener('mouseleave', startTimer);
+      heroEl.addEventListener('touchstart', () => clearInterval(autoTimer), { passive: true });
+      heroEl.addEventListener('touchend',   startTimer, { passive: true });
     }
+
+    /* Touch swipe support for carousel */
+    let swipeStartX = 0;
+    heroEl && heroEl.addEventListener('touchstart', (e) => {
+      swipeStartX = e.touches[0].clientX;
+    }, { passive: true });
+    heroEl && heroEl.addEventListener('touchend', (e) => {
+      const diff = swipeStartX - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 50) {
+        diff > 0 ? next() : prev();
+        resetTimer();
+      }
+    }, { passive: true });
 
     startTimer();
   })();
