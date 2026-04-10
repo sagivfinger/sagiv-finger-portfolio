@@ -777,10 +777,10 @@ body.page-red .nav-logo img { filter: invert(1); }
   object-fit: cover;
   transition: transform var(--dur-cinema) var(--ease-cinema);
 }
-/* Shorts thumbnails — contain so full frame is visible, no crop */
+/* Shorts thumbnails — cover to fill the 9:16 block, cropping sides of 16:9 source */
 .project-card:nth-child(4) .project-thumb-img,
 .project-card:nth-child(5) .project-thumb-img {
-  object-fit: contain;
+  object-fit: cover;
 }
 
 .project-card:hover .project-thumb-img { transform: scale(1.04); }
